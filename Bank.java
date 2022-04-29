@@ -60,7 +60,26 @@ public class Bank {
 			}
 			
 		}while (nonUnique);
+		
 		return uuid;
+	}
+	
+	public void addAccount(Account anAccount) {
+		this.accounts.add(anAccount);
+	}
+	
+	public User addUser(String firstName, String lastName, String pin) {
+		User newUser = new User(firstName, lastName, pin, this);
+		
+		this.users.add(newUser);
+		
+		// make a savings account
+		
+		Account newAccount = new Account("Savings", newUser, this);
+		newUser.addAccount(newAccount);
+		this.addAccount(newAccount);
+		
+		return newUser;
 	}
 	
 	
