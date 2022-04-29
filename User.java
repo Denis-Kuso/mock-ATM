@@ -41,4 +41,16 @@ public class User {
 		
 		
 	}
+	public boolean validatePIN(String attemptedPin) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			return MessageDigest.isEqual(md.digest(attemptedPin.getBytes()), this.hashedPin);			
+		} catch (NoSuchAlgorithmException e) {
+			System.err.println("Caught NoSuchAlgorithmException");
+			e.printStackTrace();
+			System.exit(1);
+	}
+		return false;
+		
+	}
 }
