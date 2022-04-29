@@ -82,6 +82,19 @@ public class Bank {
 		return newUser;
 	}
 	
+	public User userLogin(String userID, String pin) {
+		
+		// Check if userID is bank's user and PIN is valid
+		
+		for (User user:this.users) {
+			if(user.getUUID().compareTo(userID) == 0 && user.validatePIN(pin)) {
+				return user;
+			}
+		}
+		
+		return null;
+	}
+	
 	
 	
 
