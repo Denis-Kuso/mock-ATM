@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.HashMap;
 public class ATM {
 
 	public static void main(String[] args) {
@@ -49,5 +50,33 @@ public class ATM {
 		
 		return authUser;
 	}
+	private static String getMenuMessage(int choice) {
+		HashMap<Integer, String> menuMessages = new HashMap<Integer, String>();
+		// TODO reimplement with a loop and list of messages
+		menuMessages.put(1,"Show account transaction history");
+		menuMessages.put(2, "Withdrawal");
+		menuMessages.put(3,"Deposit");
+		menuMessages.put(4, "Transfer");
+		menuMessages.put(5, "Quit");
+		
+		return menuMessages.get(choice);
+	}
+	 public static void printUserMenu(User theUser, Scanner scanner) {
+		 theUser.printAccountSummary();
+		 
+		 int usersChoice;
+		 int numOfChoices = 5;// TODO moves this elsewhere
+		 // menu of choices
+		 do {
+			 System.out.printf("Welcome %s:", theUser.getFirstName());
+			 for(int i = 0; i < numOfChoices; i++) {
+				 System.out.printf("%s) %s",i,getMenuMessage(i));
+			 }
+			 System.out.print("Enter choice: ");
+			 usersChoice = scanner.nextInt(); // TODO catch wrong input
+		 } while(usersChoice < 1 | usersChoice > numOfChoices);
+		 
+		 
+	 }
 
 }
