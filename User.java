@@ -58,4 +58,31 @@ public class User {
 		this.accounts.add(newAccount);
 		
 	}
+	
+	public String getFirstName() {
+		return this.firstName;
+	}
+	public String getSummaryLine() {
+		char currency = '£';//TODO move variable elsewhere
+		double balance = this.getBalance();//TODO implement
+		String pattern;
+		if(balance >=0) {
+			pattern = "%.02f";
+			
+		}
+		else {
+			pattern = "(%.02f)";
+		}
+		
+		return String.format("%s : %s %s : %s", this.uuid, currency,balance, this.name);
+		
+	}
+	
+	public double getBalance() {
+		double balance  = 0;
+		for (Transaction t: this.transactions) {
+			balance += t.getAmount();
+		}
+		return balance;
+	}
 }
