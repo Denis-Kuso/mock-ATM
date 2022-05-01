@@ -42,6 +42,7 @@ public class User {
 		
 	}
 	public boolean validatePIN(String attemptedPin) {
+		//Java should not raise this exception at all
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			return MessageDigest.isEqual(md.digest(attemptedPin.getBytes()), this.hashedPin);			
