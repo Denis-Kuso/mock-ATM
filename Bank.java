@@ -7,6 +7,12 @@ public class Bank {
 	
 	private ArrayList<Account> accounts;
 	
+	public Bank(String name) {
+		this.name = name;
+		this.users = new ArrayList<User>();
+		this.accounts = new ArrayList<Account>();
+	}
+	
 	/**
 	 * Generate a new universally unique ID for a user.
 	 * @return the uuid

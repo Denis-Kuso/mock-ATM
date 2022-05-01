@@ -54,4 +54,8 @@ public class User {
 		return false;
 		
 	}
+	public void addAccount(Account newAccount) {
+		this.accounts.add(newAccount);
+		
+	}
 }
